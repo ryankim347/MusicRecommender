@@ -28,10 +28,9 @@ class LoginPage extends Component {
                 <h2>Login with Spotify below:</h2>
                 <Button variant="outline-success"
                     onClick={()=>{
-                        post("api/addCategoryAuthenticate",{
-                            playlistId: this.props.playlistId, name: this.props.category.name
-                        }).then((data1)=>{
-                            window.location.href = data1.url
+                        console.log("just clicked")
+                        post("/api/userAuthenticate").then((data)=>{
+                            window.location.href = data.url
                         })
                     }}
                 >Login with Spotify</Button>{' '}

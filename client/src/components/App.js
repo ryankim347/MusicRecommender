@@ -55,39 +55,37 @@ class App extends Component {
   // };
 
   render() {
-    console.log(this.state.loggedIn);
-    if(this.state.loggedIn) {
-      console.log("logged in")
-      return (
-        <Router>
-          <div>
-          <Switch> 
-            <JoinGroup exact path="/" />
+    return (
+      <Router>
+        <div>
+          <Switch>
+            <LoginPage exact path="/" />
+            <JoinGroup exact path="/join" />
             <Room exact path="/:roomName" />
             <NotFound default />
           </Switch>
-          </div>
-        </Router>
-      )
-    }
-    else {
-      console.log("got here")
-      return (<LoginPage />)
-    }
-    // return (
-    //   <>
-    //     <NavBar/>
+        </div>
+      </Router>
+    )
+    // console.log(this.state.loggedIn);
+    // if(this.state.loggedIn) {
+    //   console.log("logged in")
+    //   return (
     //     <Router>
-    //       <Skeleton
-    //         path="/"
-    //         handleLogin={this.handleLogin}
-    //         handleLogout={this.handleLogout}
-    //         userId={this.state.userId}
-    //       />
-    //       <NotFound default />
+    //       <div>
+    //       <Switch> 
+    //         <JoinGroup exact path="/" />
+    //         <Room exact path="/:roomName" />
+    //         <NotFound default />
+    //       </Switch>
+    //       </div>
     //     </Router>
-    //   </>
-    // );
+    //   )
+    // }
+    // else {
+    //   console.log("got here")
+    //   return (<LoginPage />)
+    // }
   }
 }
 

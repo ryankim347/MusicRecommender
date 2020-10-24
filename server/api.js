@@ -11,7 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
-
+const categoryDashboardCalls = require("./categoryDashboardCalls");
 // import authentication library
 const auth = require("./auth");
 
@@ -23,6 +23,7 @@ const socket = require("./server-socket");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
+router.post("/addCategoryAuthenticate", auth.ensureLoggedIn, categoryDashboardCalls.addCategoryAuthenticate);
 router.get("/whoami", (req, res) => {
   if (!req.user) {
     // not logged in

@@ -6,6 +6,7 @@ class NotFound extends Component {
   }
 
   render() {
+    console.log('Not Found')
     return (
       <div>
         <h1>404 Not Found</h1>

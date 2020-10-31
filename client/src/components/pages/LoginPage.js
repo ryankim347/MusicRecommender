@@ -11,6 +11,7 @@ import {
     Link
   } from "react-router-dom";
 import { post } from "../../utilities.js";
+import "./smr.css";
 
 class LoginPage extends Component {
   constructor(props) {
@@ -22,13 +23,12 @@ class LoginPage extends Component {
     return (
           <>
             <NavBar/>
-            <div>
+            <div className = "page-main">
                 <h1>Welcome to our social music recommender!</h1>
                 <hr></hr>
                 <h2>Login with Spotify below:</h2>
                 <Button variant="outline-success"
                     onClick={()=>{
-                        console.log("just clicked")
                         post("/api/userAuthenticate").then((data)=>{
                             window.location.href = data.url
                         })

@@ -7,6 +7,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+import "./smr.css";
 class JoinGroup extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class JoinGroup extends Component {
           <>
             <NavBar/>
             <Router>
-              <div>
+              <div className = "page-main">
                 <h1>Join a group!</h1>
                 <h2> This is still a skeleton, but it'll be awesome soon :)</h2>
               </div>

@@ -11,7 +11,7 @@ const express = require("express");
 
 // import models so we can interact with the database
 const User = require("./models/user");
-const sauth = require("./spotify-autheticate");
+const sauth = require("./spotify");
 // import authent›ication library
 const auth = require("./auth");
 

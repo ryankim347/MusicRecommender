@@ -15,13 +15,8 @@ class JoinGroup extends Component {
   render() {
     return (
           <>
-            <NavBar/>
-            <Router>
               <div>
-                <h1>Join a group!</h1>
-                <h2> This is still a skeleton, but it'll be awesome soon :)</h2>
               </div>
-            </Router>
           </>
         );
   }

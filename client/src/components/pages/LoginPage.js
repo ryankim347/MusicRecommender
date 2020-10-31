@@ -12,6 +12,8 @@ import {
   } from "react-router-dom";
 import { post } from "../../utilities.js";
 import "./smr.css";
+import "./Login.css";
+
 
 class LoginPage extends Component {
   constructor(props) {
@@ -22,19 +24,20 @@ class LoginPage extends Component {
     console.log("got to login page");
     return (
           <>
-            <NavBar/>
-            <div className = "page-main">
-                <h1>Welcome to our social music recommender!</h1>
-                <hr></hr>
-                <h2>Login with Spotify below:</h2>
-                <Button variant="outline-success"
-                    onClick={()=>{
-                        post("/api/userAuthenticate").then((data)=>{
-                            window.location.href = data.url
-                        })
-                    }}
-                >Login with Spotify</Button>{' '}
+            <div className='Login-title'> H A R M O N Y </div>
+            <div className='Login-body'> AI powered music recommendations for groups</div>
+            <div className='Login-body'> connecting people together through music</div>
+
+            <div className='Login-button' onClick={()=>{
+                    console.log("just clicked")
+                    post("/api/userAuthenticate").then((data)=>{
+                        window.location.href = data.url
+                    })
+                }} >
+                  <div className='Login-buttonText'> Login with Spotify</div>
+            
             </div>
+
           </>
         );
   }

@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-//import { Router } from "@reach/router";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Router } from "@reach/router";
+
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
@@ -13,6 +8,7 @@ import LoginPage from "./pages/LoginPage.js"
 import JoinGroup from "./pages/JoinGroup.js"
 import Room from "./pages/Room.js"
 import "../utilities.css";
+import "./App.css";
 
 import { socket } from "../client-socket.js";
 
@@ -56,16 +52,21 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <LoginPage exact path="/" />
-            <JoinGroup exact path="/join" />
-            <Room exact path="/:roomName" />
-            <NotFound default />
-          </Switch>
-        </div>
-      </Router>
+        <>
+            <div className='App-container'>
+              <Router>
+                <LoginPage path="/" />
+                <JoinGroup path="/join" />
+                <Room path="/:roomName" />
+                <NotFound default />
+              </Router>
+            </div>
+
+            
+        </>
+
+    
+
     )
     // console.log(this.state.loggedIn);
     // if(this.state.loggedIn) {

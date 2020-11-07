@@ -29,10 +29,15 @@ class LoginPage extends Component {
             <div className='Login-body'> connecting people together through music</div>
 
             <div className='Login-button' onClick={()=>{
-                    console.log("just clicked")
-                    fetch('/login').then((data)=>{
-                      window.location.href = data.url;
-                    });
+                    fetch('http://localhost:3000/login')
+                      .then(response => response.json())
+                      .then(data => location.href = data.url);
+                    // console.log("just clicked")
+                    // fetch('http://localhost:3000/login', {mode: 'cors'}).then(data=>{
+                    //   console.log("this is data.url");
+                    //   console.log(data.json());
+                    //   window.location.href = data.url;
+                    // });
                     //post("/api/userAuthenticate").then((data)=>{
                     //    window.location.href = data.url
                     //})

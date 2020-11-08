@@ -4,6 +4,8 @@ var SpotifyWebApi = require("spotify-web-api-node");
 
 var Promise = require("promise");
 
+require('dotenv').config();
+
 var spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_ID,
   clientSecret: process.env.SPOTIFY_SECRET,

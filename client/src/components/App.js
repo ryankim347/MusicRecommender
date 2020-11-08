@@ -51,6 +51,10 @@ class App extends Component {
   // };
 
   render() {
+    console.log("client id");
+    console.log(process.env.SPOTIFY_ID);
+    console.log("client secret");
+    console.log(process.env.SPOTIFY_SECRET);
     return (
         <>
             <div className='App-container'>

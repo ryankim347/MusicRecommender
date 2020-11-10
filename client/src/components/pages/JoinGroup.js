@@ -16,8 +16,20 @@ class JoinGroup extends Component {
 
     this.state = {
       showGroups : false,
-      showPlaylists : false
+      showPlaylists : false,
+      topTracks : []
     };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3000/top')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({topTracks: data.tracks});
+        console.log(data.tracks);
+      });
+    console.log("this is supposed to return something");
+    
   }
 
   render() {
@@ -34,6 +46,18 @@ class JoinGroup extends Component {
       playlists.push(<div className='JoinGroup-entry'> {"Playlist " + alph[i]} </div>);
     }
     playlists.push(<hr/>);
+
+
+    let tracks = [];
+    for(let i = 0; i < this.state.topTracks.length; i++) {
+      tracks.push(
+        <div style={{border: "3px solid black" }}>
+          <h1> Title: {this.state.topTracks[i].name} </h1>
+          <div> Artists: {this.state.topTracks[i].artists} </div>          
+        </div>
+
+      );
+    }
 
     return (
           <>
@@ -54,6 +78,7 @@ class JoinGroup extends Component {
                   <div  className='JoinGroup-header'> Members </div>
                   <div  className='JoinGroup-header'> Now playing </div>
                   <div  className='JoinGroup-header'> Coming  Up </div>
+                  {tracks}
                 </div>
 
               </div>

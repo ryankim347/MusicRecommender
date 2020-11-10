@@ -39,5 +39,23 @@ def login():
 
     return {"url": login_object.get_authorize_url()}
 
+@app.route('/top', methods=["GET"])
+def top():   
+    top = sp.current_user_top_tracks(limit=20, offset=0, time_range='medium_term')["items"]
+
+    response = []
+    for track in top:
+        artists = ''
+        for artist in track['artists']:
+            artists += artist['name'] + ', '
+        track_dict = {
+            'name': track['name'],
+            'artists': artists[:-2], 
+            'uri': track['uri']
+        }
+        response.append(track_dict)
+
+    return {"tracks": response}
+
 if __name__ == '__main__':
     app.run(port=3000)

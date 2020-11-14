@@ -1,15 +1,22 @@
 from imports import *
+import cluster 
 
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
-#app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
+
+SPOTIPY_CLIENT_ID='1548a7d62d9c4c05b39eebae0966dc77'
+SPOTIPY_CLIENT_SECRET='02fdc9c261f44911ae6c5f780fb39dbf'
+SPOTIPY_REDIRECT_URI="http://localhost:5000/join"
+SPOTIPY_SCOPE = "user-library-read playlist-read-private user-top-read"
+
 login_object = spotipy.oauth2.SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                     client_secret=SPOTIPY_CLIENT_SECRET,
                                     redirect_uri=SPOTIPY_REDIRECT_URI,
                                     scope=SPOTIPY_SCOPE)
+
 sp = spotipy.Spotify(auth_manager=login_object)
 
 # you need to pip install dnspython library for pymongo to work
@@ -56,6 +63,8 @@ def top():
         response.append(track_dict)
 
     return {"tracks": response}
+
+
 
 if __name__ == '__main__':
     app.run(port=3000)

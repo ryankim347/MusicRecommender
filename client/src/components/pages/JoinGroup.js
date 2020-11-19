@@ -22,7 +22,7 @@ class JoinGroup extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/top')
+    fetch('http://localhost:3000/create')
       .then(response => response.json())
       .then(data => {
         this.setState({topTracks: data.tracks});
@@ -48,12 +48,13 @@ class JoinGroup extends Component {
     playlists.push(<hr/>);
 
 
+
     let tracks = [];
     for(let i = 0; i < this.state.topTracks.length; i++) {
       tracks.push(
-        <div style={{border: "3px solid black" }}>
-          <h1> Title: {this.state.topTracks[i].name} </h1>
-          <div> Artists: {this.state.topTracks[i].artists} </div>          
+        <div>
+          <h1> {this.state.topTracks[i].title} </h1>
+          <div> {this.state.topTracks[i].artist.join(' ')} </div>          
         </div>
 
       );

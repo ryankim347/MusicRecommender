@@ -12,7 +12,6 @@ from sklearn.metrics import silhouette_score
 from sklearn.preprocessing import StandardScaler
 
 def allen_cluster(sp):
-    print("inside clustering")
     top_tracks = sp.current_user_top_tracks(limit = 20, time_range = 'short_term')
     top_tracks2 = sp.current_user_top_tracks(limit = 20, time_range = 'long_term')
     uris = []
@@ -47,7 +46,6 @@ def allen_cluster(sp):
     kmeans = KMeans(init = 'random', n_clusters = 3, n_init = 10, max_iter = 300, random_state = 42)
     kmeans.fit(normalized)
     centers = kmeans.cluster_centers_
-    tracks = set()
 
     for center in centers:
         num = centers.tolist().index(center.tolist())
@@ -57,6 +55,13 @@ def allen_cluster(sp):
                     target_instrumentalness = center[3], 
                     target_liveness = center[4], target_loudness = center[5],
                     target_valence = center[6], min_popularity = 50)
+    
+    tracks = []
+
     for track in recommended['tracks']:
-        tracks.add(track['name'] + ' -- '+ ', '.join([artist['name'] for artist in track['artists']]) + ' ' + str(num))
+        tr = {}
+        tr['title'] = track['name']
+        tr['artist'] = [artist['name'] for artist in track['artists']]
+        tracks.append(tr)
+
     return tracks

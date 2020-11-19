@@ -64,7 +64,10 @@ def top():
 
     return {"tracks": response}
 
-
+@app.route('/create', methods=["GET"])
+def create():   
+    response = cluster.allen_cluster(sp)
+    return {"tracks": list(response)}
 
 if __name__ == '__main__':
     app.run(port=3000)

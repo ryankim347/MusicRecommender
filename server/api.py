@@ -69,5 +69,34 @@ def create():
     response = cluster.allen_cluster(sp)
     return {"tracks": list(response)}
 
+@app.route('/control', methods=["GET"])
+def control():
+    SPOTIPY_CLIENT_ID='1548a7d62d9c4c05b39eebae0966dc77'
+    SPOTIPY_CLIENT_SECRET='02fdc9c261f44911ae6c5f780fb39dbf'
+    SPOTIPY_REDIRECT_URI='http://localhost:8888/callback/'
+    SPOTIPY_SCOPE = "user-library-read playlist-read-private user-top-read"
+
+
+    token = util.prompt_for_user_token(username = "55ib4yory7fwkmkn033uewc5j",
+                                   client_id = SPOTIPY_CLIENT_ID,
+                                   client_secret = SPOTIPY_CLIENT_SECRET,
+                                   redirect_uri = SPOTIPY_REDIRECT_URI,
+                                   scope = SPOTIPY_SCOPE)
+
+    if token:
+        sp = spotipy.Spotify(auth=token)
+        print(token)
+
+
+        # results = sp.current_user_top_tracks(limit=1)
+
+        # #results = sp.current_user_recently_played(limit=50, after=None, before=None)
+        # print(results['items'])
+        return token
+
+
+
+
+
 if __name__ == '__main__':
     app.run(port=3000)

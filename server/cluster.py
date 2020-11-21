@@ -60,8 +60,10 @@ def allen_cluster(sp):
 
     for track in recommended['tracks']:
         tr = {}
+        print("hello ", track['album']['images'][0]['url'])
         tr['title'] = track['name']
         tr['artist'] = [artist['name'] for artist in track['artists']]
+        tr['img'] = track['album']['images'][0]['url']
         tracks.append(tr)
 
     return tracks

@@ -16,15 +16,8 @@ class Room extends Component {
   render() {
     return (
           <>
-            <NavBar/>
-            <Router>
                 <h1>Welcome to our social music recommender!</h1>
                 <h2> This is still a skeleton, but it'll be awesome soon!</h2>
-              <Skeleton
-                path="/"
-              />
-              <NotFound default />
-            </Router>
           </>
         );
   }

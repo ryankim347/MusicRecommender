@@ -13,18 +13,6 @@ from sklearn.preprocessing import StandardScaler
 import collections
 from spotipy.oauth2 import SpotifyClientCredentials
 
-client_credentials_manager = SpotifyClientCredentials()
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-playlists = sp.user_playlists('spotify')
-while playlists:
-    for i, playlist in enumerate(playlists['items']):
-        print("%4d %s %s" % (i + 1 + playlists['offset'], playlist['uri'],  playlist['name']))
-    if playlists['next']:
-        playlists = sp.next(playlists)
-    else:
-        playlists = None
-        
 username = '22bta3ohppqii7dyfd24rraob' #allen
 SPOTIPY_CLIENT_ID='7525df977f1744be9053410f87c3143f'
 SPOTIPY_CLIENT_SECRET='c1da1b76d3214b57a6068909bf9b0f8d'
@@ -172,5 +160,11 @@ distances = distance2(tracks, centers)
 distances = sorted(distances, key = lambda x: x[1])
 for i in range(50):
   print(sp.track(distances[i][0])['name'], sp.track(distances[i][0])['preview_url'])
+
+res = []
+for i in range(50):
+  res.append(str(sp.track(distances[i][0])['name']) + ' -- ' + str(sp.track(distances[i][0])['preview_url']))
+print(res)
+print('\n'.join(res))
 
   

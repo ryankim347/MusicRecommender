@@ -153,8 +153,8 @@ def recommended():
     distances = sorted(distances, key = lambda x: x[1])
     res = []
     for i in range(50):
-      res.append(sp.track(distances[i][0])['name'], sp.track(distances[i][0])['preview_url'])
-    return res
+        res.append(sp.track(distances[i][0])['name'])
+    return '\n'.join(res)
 
 @app.route('/top', methods=["GET"])
 def top():   

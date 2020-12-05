@@ -59,6 +59,7 @@ class App extends Component {
     console.log(process.env.SPOTIFY_SECRET);
     return (
         <>
+            <NavBar/>
             <div className='App-container'>
               <Router>
                 <LoginPage path="/" />

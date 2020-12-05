@@ -6,7 +6,7 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="NavBar-container">
-        <div className="NavBar-title">Social Music Recommender</div>
+        <div className="NavBar-title"> H A R M O N Y </div>
       </nav>
     );
   }

@@ -32,7 +32,7 @@ class Home extends Component {
   render() {
     return (
           <>
-            <div className='Home-title'> <span> - </span> JUST FOR YOU <span> - </span> </div>
+            <div className='Home-title'> <span> — </span> JUST FOR YOU <span> — </span> </div>
             <div className='Home-recContainer'> 
                 {this.state.topTracks}
             </div>

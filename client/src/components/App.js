@@ -5,6 +5,8 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import NavBar from "./modules/NavBar.js";
 import LoginPage from "./pages/LoginPage.js"
+import Home from "./pages/Home.js"
+
 import JoinGroup from "./pages/JoinGroup.js"
 import Room from "./pages/Room.js"
 import "../utilities.css";
@@ -51,11 +53,17 @@ class App extends Component {
   // };
 
   render() {
+    console.log("client id");
+    console.log(process.env.SPOTIFY_ID);
+    console.log("client secret");
+    console.log(process.env.SPOTIFY_SECRET);
     return (
         <>
+            <NavBar/>
             <div className='App-container'>
               <Router>
                 <LoginPage path="/" />
+                <Home path="/home"/>
                 <JoinGroup path="/join" />
                 <Room path="/:roomName" />
                 <NotFound default />

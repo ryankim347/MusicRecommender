@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.Home-title {
+    margin: 32px;
+    font-family: 'Raleway';
+    font-size: 36px;
+}
+
+.Home-body {
+    font-size: 28px;
+}
+
+
+.Home-recContainer {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-items: center;
+}
+
+
+span {
+    color: rgb(0, 174, 0);
+}

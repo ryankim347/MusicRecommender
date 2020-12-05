@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
 .NavBar-container {
+    font-family: 'Raleway';
+    height: 60px;
+    background-color: rgb(204, 204, 204);
+    border-bottom: 3px solid rgb(0, 174, 0);
+    
     padding: var(--s) var(--m);
-    background-color: var(--primary);
+    padding-left: 32px;
 }
   
 .NavBar-title {
-    color: var(--white);
-    font-size: 20px;
+    font-size: 30px;
 }

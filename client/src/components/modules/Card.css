@@ -1,0 +1,32 @@
+.Card-container {
+    width: 200px;
+    padding: 16px 8px;
+    min-height: 100px;
+    margin: 16px;
+}
+
+.Card-container:hover {
+    transform: scale(1.02);
+    background-color: rgb(241, 241, 241);
+}
+
+.Card-img {
+    margin: 0 auto;
+    width: 160px;
+    height: 160px;
+    background-size: cover;
+}
+
+.Card-title {
+    font-size: 20px;
+}
+
+.Card-artist {
+    color: rgb(0, 174, 0);
+    font-size: 16px;
+}
+
+.Card-feat {
+    font-size: 12px;
+}
+

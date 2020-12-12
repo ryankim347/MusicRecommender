@@ -21,11 +21,11 @@ class Home extends Component {
     post("/api/token", {code: query.get('code')})
       .then((res) => {
         console.log(res);
-        // get('/api/top')
-        //   .then((tracks) => {
-        //     console.log(tracks.tracks)
-        //     this.setState({topTracks: tracks.tracks});
-        //   });
+        get('/api/top')
+          .then((tracks) => {
+            console.log(tracks.tracks)
+            this.setState({topTracks: tracks.tracks});
+          });
       });
 
 

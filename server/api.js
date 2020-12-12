@@ -39,12 +39,10 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/token", (req, res) => {
-  spotifyApi.authorizationCodeGrant(req.body.code).then((data) => res.send({test: 'test'}));
-
-  // spotifyApi.authorizationCodeGrant(req.body.code)
-  //   .then(
-  //     function(data) {
-  //       res.send({data: data, code: req.body.code});
+  spotifyApi.authorizationCodeGrant(req.body.code)
+    .then(
+      function(data) {
+        res.send({data: data, code: req.body.code});
         // console.log(req.body.code);
 
         // console.log('The token expires in ' + data.body['expires_in']);
@@ -52,26 +50,26 @@ router.post("/token", (req, res) => {
         // console.log('The refresh token is ' + data.body['refresh_token']);
 
         // Set the access token on the API object to use it in later calls
-        // spotifyApi.setAccessToken(data.body['access_token']);
-        // spotifyApi.setRefreshToken(data.body['refresh_token']);
-        // spotifyApi.getMe().then((me) => {
-        //   const user = new User({
-        //     access_token: data.body['access_token'],
-        //     refresh_token: data.body['refresh_token'],
-        //     name: me.body.display_name,
-        //     user_id: me.body.id,
-        //   });
-        //   user.save().then((u) => console.log(u));
-        // })
+        spotifyApi.setAccessToken(data.body['access_token']);
+        spotifyApi.setRefreshToken(data.body['refresh_token']);
+        spotifyApi.getMe().then((me) => {
+          const user = new User({
+            access_token: data.body['access_token'],
+            refresh_token: data.body['refresh_token'],
+            name: me.body.display_name,
+            user_id: me.body.id,
+          });
+          user.save().then((u) => console.log(u));
+        })
 
-        // res.send({token: data.body['access_token']});
+        res.send({token: data.body['access_token']});
         // console.log('here is the access token again' + spotifyApi.getAccessToken());
 
-    //   },
-    //   function(err) {
-    //     console.log('Something went wrong!', err);
-    //   }
-    // );
+      },
+      function(err) {
+        console.log('Something went wrong!', err);
+      }
+    );
 });
 
 router.get("/top", (req, res) => {

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Card from "../modules/Card.js";
 import "./smr.css";
-
+import { get, post } from "../../utilities.js";
+import { useLocation } from 'react-router-dom';
 import './Home.css';
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -14,18 +16,27 @@ class Home extends Component {
   }
 
   componentDidMount() {    
-    fetch('http://localhost:3000/create')
-    .then(response => response.json())
-    .then(data => {
-      this.setState({card:<Card title={data.tracks[0]['title']} artists={data.tracks[0]['artist']} img={data.tracks[0]['img']}/> });
+    let query = new URLSearchParams(this.props.location.search);
+    console.log(query.get('code'));
+    post("/api/token", {code: query.get('code')})
+      .then((res) => {
+        console.log(res);
+        get('/api/top');
+      });
 
-      let rows = [];
-      for(let i = 1; i < data.tracks.length + 1; i++) {
-          rows.push(<Card title={data.tracks[i-1]['title']} artists={data.tracks[i-1]['artist']} img={data.tracks[i-1]['img']}/>)          
-      }
-      this.setState({topTracks: rows})
+
+    // fetch('http://localhost:3000/create')
+    // .then(response => response.json())
+    // .then(data => {
+    //   this.setState({card:<Card title={data.tracks[0]['title']} artists={data.tracks[0]['artist']} img={data.tracks[0]['img']}/> });
+
+    //   let rows = [];
+    //   for(let i = 1; i < data.tracks.length + 1; i++) {
+    //       rows.push(<Card title={data.tracks[i-1]['title']} artists={data.tracks[i-1]['artist']} img={data.tracks[i-1]['img']}/>)          
+    //   }
+    //   this.setState({topTracks: rows})
   
-    });
+    // });
 
   }
 

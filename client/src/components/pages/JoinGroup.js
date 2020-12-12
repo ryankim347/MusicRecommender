@@ -7,7 +7,10 @@ import {
     Route,
     Link
   } from "react-router-dom";
+<<<<<<< HEAD
 import "./smr.css";
+=======
+>>>>>>> 2ba1469454bbd90b3ccb1d5aa0240148dbc747b8
 
 import './JoinGroup.css';
 class JoinGroup extends Component {
@@ -16,6 +19,7 @@ class JoinGroup extends Component {
 
     this.state = {
       showGroups : false,
+<<<<<<< HEAD
       showPlaylists : false,
       topTracks : []
     };
@@ -30,6 +34,10 @@ class JoinGroup extends Component {
       });
     console.log("this is supposed to return something");
     
+=======
+      showPlaylists : false
+    };
+>>>>>>> 2ba1469454bbd90b3ccb1d5aa0240148dbc747b8
   }
 
   render() {
@@ -47,6 +55,7 @@ class JoinGroup extends Component {
     }
     playlists.push(<hr/>);
 
+<<<<<<< HEAD
 
 
     let tracks = [];
@@ -60,6 +69,8 @@ class JoinGroup extends Component {
       );
     }
 
+=======
+>>>>>>> 2ba1469454bbd90b3ccb1d5aa0240148dbc747b8
     return (
           <>
               <div className='JoinGroup-container'>
@@ -79,7 +90,10 @@ class JoinGroup extends Component {
                   <div  className='JoinGroup-header'> Members </div>
                   <div  className='JoinGroup-header'> Now playing </div>
                   <div  className='JoinGroup-header'> Coming  Up </div>
+<<<<<<< HEAD
                   {tracks}
+=======
+>>>>>>> 2ba1469454bbd90b3ccb1d5aa0240148dbc747b8
                 </div>
 
               </div>

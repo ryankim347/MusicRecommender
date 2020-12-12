@@ -24,7 +24,6 @@ class LoginPage extends Component {
 
             <div className='Login-button' onClick={this.login} >
                   <div className='Login-buttonText'> Login with Spotify</div>
-            
             </div>
 
           </>

@@ -62,7 +62,10 @@ class App extends Component {
             <div className='App-container'>
               <Router>
                 <LoginPage path="/" />
+<<<<<<< HEAD
                 <Home path="/home"/>
+=======
+>>>>>>> 2ba1469454bbd90b3ccb1d5aa0240148dbc747b8
                 <JoinGroup path="/join" />
                 <Room path="/:roomName" />
                 <NotFound default />

@@ -21,7 +21,11 @@ class Home extends Component {
     post("/api/token", {code: query.get('code')})
       .then((res) => {
         console.log(res);
-        get('/api/top');
+        get('/api/top')
+          .then((tracks) => {
+            console.log(tracks.tracks)
+            this.setState({topTracks: tracks.tracks});
+          });
       });
 
 
@@ -41,11 +45,16 @@ class Home extends Component {
   }
 
   render() {
+    console.log(this.state.topTracks);
+    let tracks = this.state.topTracks.map((track) => {
+      return <Card title={track.title} artists={track.artists} img={track.img}/>
+    })
+
     return (
           <>
             <div className='Home-title'> <span> — </span> JUST FOR YOU <span> — </span> </div>
             <div className='Home-recContainer'> 
-                {this.state.topTracks}
+              {tracks}
             </div>
           </>
         );

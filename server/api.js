@@ -19,6 +19,9 @@ const spotifyApi = new SpotifyWebApi({
   clientId: SPOTIFY_CLIENT_ID
 });
 
+const User = require("./models/user.js");
+
+
 const express = require("express");
 // import authentication library
 const auth = require("./auth");
@@ -48,6 +51,16 @@ router.post("/token", (req, res) => {
         // Set the access token on the API object to use it in later calls
         spotifyApi.setAccessToken(data.body['access_token']);
         spotifyApi.setRefreshToken(data.body['refresh_token']);
+        spotifyApi.getMe().then((me) => {
+          const user = new User({
+            access_token: data.body['access_token'],
+            refresh_token: data.body['refresh_token'],
+            name: me.body.display_name,
+            user_id: me.body.id,
+          });
+          user.save().then((u) => console.log(u));
+        })
+
         res.send({token: data.body['access_token']});
         console.log('here is the access token again' + spotifyApi.getAccessToken());
 
@@ -65,9 +78,22 @@ router.get("/top", (req, res) => {
   }
   // spotifyApi.setAccessToken('BQAk5rpJ-dlDBVX2UTGo3eoLXMN0bGQRqO3eA0zm5zdXDxCjSG_rw5RhhEEvVDztzTxmgyK_g--vtS5koOmVZK6TzXwRVG9srqHfE8vngnpIeJR3zseD7ZDJze6uN4gp6ZsTpNY1ohJfrTkJpLJ96uh9DGaFPEAGmmVDdwjJPl6ZYqIg396oH-scsGHZ');
   console.log('access token in top ' + spotifyApi.getAccessToken());
-  res.send('hello world');
-  // spotifyApi.getMyTopTracks(options).then((data) => console.log(data.body.items));
+  spotifyApi.getMyTopTracks(options).then( (data) => {
+    console.log(data.body.items);
 
+    tracks = data.body.items.map((track) => {
+      return {
+        title: track['name'],
+        artists: track['artists'].map((artist) => artist['name']), 
+        img: track['album']['images'][0]['url']
+      }
+    });
+
+    res.send({tracks: tracks})
+   }
+
+  
+  );
   // res.send({url: spotifyApi.createAuthorizeURL(SPOTIFY_SCOPES)});
 });
 

@@ -32,14 +32,12 @@ const auth = require("./auth");
 const socket = require("./server-socket");
 
 // Server configuration below
-// TODO change connection URL after setting up your team database
-const mongoConnectionURL = "mongodb://localhost:27017/myapp";
 // TODO change database name to the name you chose
-const databaseName = "SMR_DATABASE";
+const databaseName = "website";
 
 // connect to mongodb
 mongoose
-  .connect(mongoConnectionURL, {
+  .connect('mongodb+srv://helu:smr-helu@smr-cluster.n7vwr.mongodb.net/website?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: databaseName,

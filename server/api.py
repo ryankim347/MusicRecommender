@@ -4,7 +4,7 @@ import cluster
 load_dotenv()
 app = Flask(__name__)
 CORS(app)
-app.config["MONGO_URI"] = MONGO_URI
+# app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
 
 SPOTIPY_CLIENT_ID='1548a7d62d9c4c05b39eebae0966dc77'

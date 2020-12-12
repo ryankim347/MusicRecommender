@@ -2,14 +2,9 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
   name: String,
-  topSongs: {
-    type: [String],
-    default: []
-  },
-  topArtists: {
-    type: [String],
-    default: []
-  }
+  user_id: String,
+  access_token: String,
+  refresh_token: String,
 });
 
 // compile model from schema

@@ -11,7 +11,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const SPOTIFY_SCOPES = ['user-library-read', 'playlist-read-private', 'user-top-read'];
 const SPOTIFY_CLIENT_ID='1548a7d62d9c4c05b39eebae0966dc77'
 const SPOTIFY_CLIENT_SECRET='02fdc9c261f44911ae6c5f780fb39dbf'
-const SPOTIFY_REDIRECT_URI="http://localhost:5000/home"
+const SPOTIFY_REDIRECT_URI="https://aim-harmony.herokuapp.com/home"
 
 const spotifyApi = new SpotifyWebApi({
   redirectUri: SPOTIFY_REDIRECT_URI,
@@ -39,7 +39,8 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/token", (req, res) => {
-  res.send(req.body.code);
+  spotifyApi.authorizationCodeGrant(req.body.code).then((data) => res.send({test: 'test'}));
+
   // spotifyApi.authorizationCodeGrant(req.body.code)
   //   .then(
   //     function(data) {

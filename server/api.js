@@ -42,7 +42,6 @@ router.post("/token", (req, res) => {
   spotifyApi.authorizationCodeGrant(req.body.code)
     .then(
       function(data) {
-        res.send({data: data, code: req.body.code});
         // console.log(req.body.code);
 
         // console.log('The token expires in ' + data.body['expires_in']);
@@ -76,8 +75,9 @@ router.get("/top", (req, res) => {
   let options = {
     limit: 20,
     time_range: 'long_term'
-  }
-  // spotifyApi.setAccessToken('BQAk5rpJ-dlDBVX2UTGo3eoLXMN0bGQRqO3eA0zm5zdXDxCjSG_rw5RhhEEvVDztzTxmgyK_g--vtS5koOmVZK6TzXwRVG9srqHfE8vngnpIeJR3zseD7ZDJze6uN4gp6ZsTpNY1ohJfrTkJpLJ96uh9DGaFPEAGmmVDdwjJPl6ZYqIg396oH-scsGHZ');
+  };
+
+  // spotifyApi.setAccessToken(req.query.access_token);
   console.log('access token in top ' + spotifyApi.getAccessToken());
   spotifyApi.getMyTopTracks(options).then( (data) => {
     console.log(data.body.items);

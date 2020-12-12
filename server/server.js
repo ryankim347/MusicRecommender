@@ -29,7 +29,7 @@ const api = require("./api");
 const auth = require("./auth");
 
 // socket stuff
-const socket = require("./server-socket");
+// const socket = require("./server-socket");
 
 // Server configuration below
 // TODO change database name to the name you chose
@@ -95,7 +95,7 @@ app.use((err, req, res, next) => {
 // hardcode port to 3000 for now
 const port = 3000;
 const server = http.Server(app);
-socket.init(server);
+// socket.init(server);
 
 
 server.listen(process.env.PORT || 3000, () => {

@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 # app.config["MONGO_URI"] = MONGO_URI
 mongo = PyMongo(app)
-app.config["MONGO_URI"]='mongodb+srv://sean:smr-sean@smr-cluster.n7vwr.mongodb.net/website?retryWrites=true&w=majority'
+#app.config["MONGO_URI"]='mongodb+srv://sean:smr-sean@smr-cluster.n7vwr.mongodb.net/website?retryWrites=true&w=majority'
 SPOTIPY_CLIENT_ID='1548a7d62d9c4c05b39eebae0966dc77'
 SPOTIPY_CLIENT_SECRET='02fdc9c261f44911ae6c5f780fb39dbf'
 SPOTIPY_REDIRECT_URI="http://localhost:5000/join"
@@ -43,6 +43,7 @@ def login():
     user_collection = mongo.db.users
     if(user_collection.find_one({"user id": sp.me()['id']}) == None):
         user_collection.insert({'name': sp.me()['display_name'], 'user id': sp.me()['id'], 'refresh token': login_object.get_access_token()['refresh_token'], 'access token': login_object.get_access_token()['access_token']})
+    print({'name': sp.me()['display_name'], 'user id': sp.me()['id'], 'refresh token': login_object.get_access_token()['refresh_token'], 'access token': login_object.get_access_token()['access_token']})
 
     return {"url": login_object.get_authorize_url()}
 

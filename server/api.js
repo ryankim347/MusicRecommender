@@ -39,10 +39,11 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/token", (req, res) => {
-  spotifyApi.authorizationCodeGrant(req.body.code)
-    .then(
-      function(data) {
-        res.send({data: data, code: req.body.code});
+  res.send(req.body.code);
+  // spotifyApi.authorizationCodeGrant(req.body.code)
+  //   .then(
+  //     function(data) {
+  //       res.send({data: data, code: req.body.code});
         // console.log(req.body.code);
 
         // console.log('The token expires in ' + data.body['expires_in']);
@@ -65,11 +66,11 @@ router.post("/token", (req, res) => {
         // res.send({token: data.body['access_token']});
         // console.log('here is the access token again' + spotifyApi.getAccessToken());
 
-      },
-      function(err) {
-        console.log('Something went wrong!', err);
-      }
-    );
+    //   },
+    //   function(err) {
+    //     console.log('Something went wrong!', err);
+    //   }
+    // );
 });
 
 router.get("/top", (req, res) => {

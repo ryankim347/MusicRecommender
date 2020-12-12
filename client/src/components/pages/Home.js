@@ -21,12 +21,12 @@ class Home extends Component {
     post("/api/token", {code: query.get('code')})
       .then((res) => {
         this.setState({access_token: res.token})
-		console.log(res.token)
         get('/api/top')
           .then((tracks) => {
             this.setState({topTracks: tracks.tracks});
           });
-      });
+      }
+	  .then(console.log(res.token));
 
 
     // fetch('http://localhost:3000/create')

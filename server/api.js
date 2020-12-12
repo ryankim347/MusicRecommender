@@ -51,15 +51,15 @@ router.post("/token", (req, res) => {
         // Set the access token on the API object to use it in later calls
         spotifyApi.setAccessToken(data.body['access_token']);
         spotifyApi.setRefreshToken(data.body['refresh_token']);
-        spotifyApi.getMe().then((me) => {
-          const user = new User({
-            access_token: data.body['access_token'],
-            refresh_token: data.body['refresh_token'],
-            name: me.body.display_name,
-            user_id: me.body.id,
-          });
-          user.save().then((u) => console.log(u));
-        })
+        // spotifyApi.getMe().then((me) => {
+        //   const user = new User({
+        //     access_token: data.body['access_token'],
+        //     refresh_token: data.body['refresh_token'],
+        //     name: me.body.display_name,
+        //     user_id: me.body.id,
+        //   });
+        //   user.save().then((u) => console.log(u));
+        // })
 
         res.send({token: data.body['access_token']});
         console.log('here is the access token again' + spotifyApi.getAccessToken());

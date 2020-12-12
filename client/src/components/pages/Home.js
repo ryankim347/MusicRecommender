@@ -26,7 +26,7 @@ class Home extends Component {
             this.setState({topTracks: tracks.tracks});
           });
       }
-	  .then(console.log(res.token));
+	  );
 
 
     // fetch('http://localhost:3000/create')
@@ -46,6 +46,7 @@ class Home extends Component {
 
   render() {
     console.log(this.state.topTracks);
+	console.log(this.state.access_token);
     let tracks = this.state.topTracks.map((track) => {
       return <Card title={track.title} artists={track.artists} img={track.img}/>
     })

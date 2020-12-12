@@ -53,7 +53,7 @@ class Home extends Component {
 
     return (
           <>
-            <div className='Home-title'> <span> — </span> JUST FOR YOU <span> — </span> </div>
+            <div className='Home-title'> <span> — </span> this.state.access_token <span> — </span> </div>
             <div className='Home-recContainer'> 
               {tracks}
             </div>
